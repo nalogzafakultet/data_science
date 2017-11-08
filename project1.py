@@ -16,6 +16,7 @@ sex_data = [item[5] for item in data]
 race_data = [item[7] for item in data]
 intents = [item[3] for item in data]
 
+#setting the dates
 dates = [datetime.datetime(year=int(item[1]), month=int(item[2]), day=1) for item in data]
 
 # counting the deaths by year, sex, race, and counting homicide by race
@@ -60,25 +61,20 @@ race_per_hundredk = {}
 for race in race_counts:
     if race == 'Asian/Pacific Islander':
         race_per_hundredk[race] = race_counts[race] / (int(census[1][14]) + int(census[1][15])) * 10000
-    elif race == 'Black':
-        race_per_hundredk[race] = race_counts[race] / int(census[1][12]) * 100000
-    elif race == 'Native American/Native Alaskan':
-        race_per_hundredk[race] = race_counts[race] / int(census[1][13]) * 100000
-    elif race == 'Hispanic':
-        race_per_hundredk[race] = race_counts[race] / int(census[1][11]) * 100000
-    elif race == 'White':
-        race_per_hundredk[race] = race_counts[race] / int(census[1][10]) * 100000
-
-for race in race_counts:
-    if race == 'Asian/Pacific Islander':
         homicide_race_counts[race] = homicide_race_counts[race] / (int(census[1][14]) + int(census[1][15])) * 10000
     elif race == 'Black':
+        race_per_hundredk[race] = race_counts[race] / int(census[1][12]) * 100000
         homicide_race_counts[race] = homicide_race_counts[race] / int(census[1][12]) * 100000
     elif race == 'Native American/Native Alaskan':
+        race_per_hundredk[race] = race_counts[race] / int(census[1][13]) * 100000
         homicide_race_counts[race] = homicide_race_counts[race] / int(census[1][13]) * 100000
     elif race == 'Hispanic':
+        race_per_hundredk[race] = race_counts[race] / int(census[1][11]) * 100000
         homicide_race_counts[race] = homicide_race_counts[race] / int(census[1][11]) * 100000
     elif race == 'White':
+        race_per_hundredk[race] = race_counts[race] / int(census[1][10]) * 100000
         homicide_race_counts[race] = homicide_race_counts[race] / int(census[1][10]) * 100000
 
+
 print(homicide_race_counts)
+print(race_per_hundredk)
